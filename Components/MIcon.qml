@@ -8,6 +8,7 @@ Item {
     property color color
     property string fromSource
 
+    property bool overlay: false
     property int size: MIcons.xxl
 
     implicitWidth: size
@@ -25,16 +26,19 @@ Item {
                 return `file://${parent.source}`;
             }
 
-            return `image://icon/parent.source`;
+            if (parent.source === "") {
+                return "image://icon/application-x-executable";
+            }
+
+            return `image://icon/${parent.source}`;
         }
         width: parent.size
         height: parent.size
         sourceSize: Qt.size(parent.size, parent.size)
-        visible: false
     }
 
     ColorOverlay {
-        visible: Boolean(parent.color)
+        visible: parent.overlay
         anchors.fill: parent
         source: img
         color: parent.color

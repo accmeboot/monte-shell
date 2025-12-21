@@ -11,20 +11,70 @@ PanelWindow {
 
     color: "transparent"
 
-    implicitHeight: content.implicitHeight
-    implicitWidth: content.implicitWidth
+    implicitWidth: container.implicitWidth + shadow.extraSpace
+    implicitHeight: container.implicitHeight + shadow.extraSpace
+
+    exclusiveZone: container.implicitHeight
 
     anchors {
         top: true
     }
 
-    MContainer {
-        id: content
-        paddingVertical: MSpacing.xs
+    MShadowEffect {
+        id: shadow
+        source: container
+        anchors.fill: container
+    }
 
-        RowLayout {
-            WorkspacesWidget {}
-            ClockWidget {}
+    Item {
+        id: container
+        property int concavesWidth: concaveTopLeft.implicitWidth + concaveTopRight.implicitWidth
+
+        implicitWidth: content.implicitWidth + concavesWidth
+        implicitHeight: content.implicitHeight
+
+        anchors.horizontalCenter: parent.horizontalCenter
+
+        MConcaveCorner {
+            id: concaveTopLeft
+            location: "top-left"
+            anchors.top: parent.top
+            anchors.left: parent.left
+        }
+
+        MConcaveCorner {
+            id: concaveTopRight
+            location: "top-right"
+            anchors.top: parent.top
+            anchors.right: parent.right
+        }
+
+        MContainer {
+            id: content
+            paddingVertical: MSpacing.xs
+            paddingHorizontal: MSpacing.xs
+            topLeftRadius: 0
+            topRightRadius: 0
+
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            RowLayout {
+                WorkspacesWidget {}
+                Item {
+                    id: windowContainer
+                    implicitWidth: 250
+                    implicitHeight: window.implicitHeight
+                    WindowWidget {
+                        id: window
+                        maxWidth: windowContainer.implicitWidth
+                    }
+                }
+                PipewireWidget {}
+                NetworkWidget {}
+                BluetoothWidget {}
+                BatteryWidget {}
+                ClockWidget {}
+            }
         }
     }
 }

@@ -1,6 +1,5 @@
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
 
 import qs.Components
 import qs.Config
@@ -11,16 +10,8 @@ MContainer {
 
     color: MColors.base01
 
-    RowLayout {
-        spacing: MSpacing.xs
-        MIcon {
-            size: MIcons.l
-            fromSource: "calendar.svg"
-            color: MColors.base05
-        }
-        MText {
-            text: Qt.formatDateTime(systemClock.date, "dddd hh:mm")
-        }
+    MText {
+        text: Qt.formatDateTime(systemClock.date, "dddd hh:mm")
     }
 
     SystemClock {
