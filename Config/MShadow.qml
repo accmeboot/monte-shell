@@ -5,9 +5,9 @@ import QtQuick
 
 Singleton {
     property color shadowColor: "#000000"
-    property int blurMax: 24
+    property int blurMax: 8
     property real shadowBlur: 0.85
-    property real shadowOpacity: 0.85
+    property real shadowOpacity: 1.0
     property int shadowHorizontalOffset: 0
     property int shadowVerticalOffset: 0
 }

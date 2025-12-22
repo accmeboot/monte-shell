@@ -20,6 +20,9 @@ MContainer {
             color: MColors.base05
             overlay: true
         }
+        MText {
+            text: NetworkManager.connectionName
+        }
     }
 
     function getIcon() {

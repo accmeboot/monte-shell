@@ -30,5 +30,8 @@ MContainer {
             color: MColors.base05
             overlay: true
         }
+        MText {
+            text: BluetoothManager.currentDeviceName ?? BluetoothManager.adapter?.name ?? ""
+        }
     }
 }

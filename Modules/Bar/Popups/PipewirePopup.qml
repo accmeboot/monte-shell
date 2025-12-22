@@ -1,25 +1,27 @@
 import Quickshell
 import QtQuick
-import QtQuick.Layouts
 
 import qs.Components
-import qs.Config
-import qs.Modules.Bar.Widgets
-import qs.Modules.Bar.Popups
 
-PanelWindow {
+PopupWindow {
     id: root
 
-    color: "transparent"
+    required property Item widget
+    required property PanelWindow anchorWindow
+    required property int contentHeight
 
     implicitWidth: container.implicitWidth + shadow.extraSpace
     implicitHeight: container.implicitHeight + shadow.extraSpace
 
-    exclusiveZone: container.implicitHeight
+    color: "transparent"
 
-    anchors {
-        top: true
+    anchor {
+        window: anchorWindow
+        rect.x: widget.x + (widget.width - root.width) / 2
+        rect.y: contentHeight
     }
+
+    visible: false
 
     MShadowEffect {
         id: shadow
@@ -52,40 +54,15 @@ PanelWindow {
 
         MContainer {
             id: content
-            paddingVertical: MSpacing.xs
-            paddingHorizontal: MSpacing.xs
+
             topLeftRadius: 0
             topRightRadius: 0
 
             anchors.horizontalCenter: parent.horizontalCenter
 
-            RowLayout {
-                WorkspacesWidget {}
-                Item {
-                    id: windowContainer
-                    implicitWidth: 250
-                    implicitHeight: window.implicitHeight
-                    WindowWidget {
-                        id: window
-                        maxWidth: windowContainer.implicitWidth
-                    }
-                }
-                PipewireWidget {
-                    id: pipewireWidget
-                    pipewirePopup: pipewirePopup
-                }
-                NetworkWidget {}
-                BluetoothWidget {}
-                BatteryWidget {}
-                ClockWidget {}
+            MText {
+                text: "MENU"
             }
         }
-    }
-
-    PipewirePopup {
-        id: pipewirePopup
-        widget: pipewireWidget
-        anchorWindow: root
-        contentHeight: content.height
     }
 }

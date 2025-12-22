@@ -10,9 +10,9 @@ Singleton {
     property BluetoothAdapter adapter: Bluetooth.defaultAdapter
     property var devices: Bluetooth.devices
 
-    property string currentDeviceName: {
+    property var currentDeviceName: {
         var device = devices.values.find(d => d.connected);
-        return device?.name ?? null;
+        return device?.name;
     }
 
     property bool isDeviceInUse: {
