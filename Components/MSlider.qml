@@ -10,7 +10,7 @@ Slider {
 
     value: 0.5
 
-    implicitWidth: 150
+    implicitWidth: 200
 
     background: Rectangle {
         x: root.leftPadding
@@ -36,10 +36,17 @@ Slider {
         x: root.leftPadding + root.visualPosition * (root.availableWidth - width)
         y: root.topPadding + root.availableHeight / 2 - height / 2
 
-        implicitWidth: MIcons.m
-        implicitHeight: MIcons.m
+        implicitWidth: MIcons.xxl
+        implicitHeight: MIcons.xl
         radius: MBorder.radius
 
-        color: MColors.base0D
+        color: MColors.base0A
+
+        MText {
+            anchors.centerIn: parent
+            text: Math.round(root.value)
+            color: MColors.base02
+            font.bold: true
+        }
     }
 }
