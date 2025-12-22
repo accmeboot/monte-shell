@@ -8,9 +8,6 @@ import qs.Managers
 MContainer {
     id: root
 
-    paddingVertical: MSpacing.xs
-    paddingHorizontal: MSpacing.xs
-
     property var activeWindow: NiriManager.getActiveWindow()
 
     visible: Boolean(activeWindow)

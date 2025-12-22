@@ -11,9 +11,6 @@ MContainer {
 
     required property PipewirePopup pipewirePopup
 
-    paddingVertical: MSpacing.xs
-    paddingHorizontal: MSpacing.xs
-
     color: MColors.base01
 
     Item {
@@ -29,10 +26,10 @@ MContainer {
                     if (PipewireManager.isMuted)
                         return "volume-muted.svg";
 
-                    if (PipewireManager.volume <= 30)
+                    if (PipewireManager.sinkVolume <= 30)
                         return "volume-low.svg";
 
-                    if (PipewireManager.volume <= 60)
+                    if (PipewireManager.sinkVolume <= 60)
                         return "volume-half.svg";
 
                     return "volume-full.svg";

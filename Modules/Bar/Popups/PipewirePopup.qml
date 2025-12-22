@@ -1,7 +1,10 @@
 import Quickshell
 import QtQuick
+import QtQuick.Layouts
 
 import qs.Components
+import qs.Managers
+import qs.Config
 
 PopupWindow {
     id: root
@@ -17,11 +20,23 @@ PopupWindow {
 
     anchor {
         window: anchorWindow
-        rect.x: widget.x + (widget.width - root.width) / 2
+        rect.x: widget.x + (widget.width - content.width) / 2
         rect.y: contentHeight
     }
 
     visible: false
+
+    Connections {
+        target: OverlayManager
+
+        function onClicked() {
+            root.visible = false;
+        }
+    }
+
+    onVisibleChanged: {
+        OverlayManager.set(visible);
+    }
 
     MShadowEffect {
         id: shadow
@@ -60,8 +75,37 @@ PopupWindow {
 
             anchors.horizontalCenter: parent.horizontalCenter
 
-            MText {
-                text: "MENU"
+            ColumnLayout {
+                RowLayout {
+                    MIcon {
+                        size: MIcons.l
+                        fromSource: "speaker.svg"
+                        color: MColors.base05
+                        overlay: true
+                    }
+                    MSlider {
+                        id: sinkVolumeSlider
+                        value: PipewireManager.sinkVolume
+                        onMoved: {
+                            PipewireManager.setSinkVolume(Math.round(value));
+                        }
+                    }
+                }
+                RowLayout {
+                    MIcon {
+                        size: MIcons.l
+                        fromSource: "microphone.svg"
+                        color: MColors.base05
+                        overlay: true
+                    }
+                    MSlider {
+                        id: sourceVolumeSlider
+                        value: PipewireManager.sourceVolume
+                        onMoved: {
+                            PipewireManager.setSourceVolume(Math.round(value));
+                        }
+                    }
+                }
             }
         }
     }

@@ -12,13 +12,20 @@ Singleton {
 
     property var nodesModel: Pipewire.nodes
 
-    property PwObjectTracker tracker: PwObjectTracker {
-        objects: [root.defaultSink]
+    PwObjectTracker {
+        objects: [root.defaultSink, root.defaultSource]
     }
 
-    property int volume: {
+    property int sinkVolume: {
         if (defaultSink && defaultSink.audio) {
             return Math.round(defaultSink.audio.volume * 100);
+        }
+        return 0;
+    }
+
+    property int sourceVolume: {
+        if (defaultSource && defaultSource.audio) {
+            return Math.round(defaultSource.audio.volume * 100);
         }
         return 0;
     }
@@ -29,9 +36,15 @@ Singleton {
 
     property string deviceName: defaultSink ? defaultSink.nickname : "none"
 
-    function setVolume(vol) {
+    function setSinkVolume(vol) {
         if (defaultSink && defaultSink.audio) {
             defaultSink.audio.volume = vol / 100.0;
+        }
+    }
+
+    function setSourceVolume(vol) {
+        if (defaultSource && defaultSource.audio) {
+            defaultSource.audio.volume = vol / 100.0;
         }
     }
 

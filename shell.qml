@@ -2,6 +2,7 @@ import QtQuick
 import Quickshell
 
 import qs.Modules.Bar
+import qs.Components
 
 Scope {
     Variants {
@@ -14,6 +15,10 @@ Scope {
             Bar {
                 id: barPanel
                 screen: rootItem.modelData
+            }
+
+            MOverlay {
+                id: overlayPanel
             }
         }
     }

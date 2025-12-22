@@ -52,8 +52,6 @@ PanelWindow {
 
         MContainer {
             id: content
-            paddingVertical: MSpacing.xs
-            paddingHorizontal: MSpacing.xs
             topLeftRadius: 0
             topRightRadius: 0
 

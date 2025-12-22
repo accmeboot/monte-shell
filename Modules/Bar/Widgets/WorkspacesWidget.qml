@@ -7,8 +7,6 @@ import qs.Config
 
 MContainer {
     id: root
-    paddingVertical: MSpacing.xs
-    paddingHorizontal: MSpacing.xs
 
     color: MColors.base01
 

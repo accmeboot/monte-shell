@@ -6,8 +6,8 @@ import qs.Config
 Rectangle {
     id: root
 
-    property int paddingHorizontal: MSpacing.s
-    property int paddingVertical: MSpacing.s
+    property int paddingHorizontal: MSpacing.xs
+    property int paddingVertical: MSpacing.xs
 
     property int maxWidth: -1
 

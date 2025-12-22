@@ -7,9 +7,6 @@ import qs.Config
 import qs.Components
 
 MContainer {
-    paddingVertical: MSpacing.xs
-    paddingHorizontal: MSpacing.xs
-
     color: MColors.base01
 
     RowLayout {
