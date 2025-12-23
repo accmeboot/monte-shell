@@ -20,6 +20,7 @@ PanelWindow {
     MouseArea {
         anchors.fill: parent
         enabled: true
+        acceptedButtons: Qt.AllButtons
         z: 0
         onClicked: {
             OverlayManager.clicked();

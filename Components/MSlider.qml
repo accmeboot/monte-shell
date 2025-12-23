@@ -17,7 +17,7 @@ Slider {
         y: root.topPadding + root.availableHeight / 2 - height / 2
 
         implicitWidth: root.implicitWidth
-        implicitHeight: MIcons.m
+        implicitHeight: MIcons.s
 
         width: root.availableWidth
         height: implicitHeight
