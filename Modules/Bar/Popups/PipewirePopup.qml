@@ -82,6 +82,50 @@ PopupWindow {
 
                 spacing: MSpacing.xs
 
+                MContainer {
+                    color: settingsMouseArea.containsMouse ? MColors.base01 : MColors.base00
+                    Item {
+                        implicitWidth: sourceSliderRow.implicitWidth
+                        implicitHeight: settingsText.implicitHeight
+
+                        RowLayout {
+                            spacing: MSpacing.s
+                            MIcon {
+                                size: MIcons.l
+                                fromSource: "audio-settings.svg"
+                                color: MColors.base05
+                                overlay: true
+                            }
+                            MText {
+                                id: settingsText
+                                text: "Open settings"
+                                font.bold: true
+                            }
+                        }
+
+                        MouseArea {
+                            id: settingsMouseArea
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+
+                            onClicked: {
+                                //TODO: use the command from settings
+                                Quickshell.execDetached(["sh", "-c", "wezterm start -e wiremix -v output"]);
+                                root.visible = false;
+                            }
+                        }
+                    }
+                }
+
+                Rectangle {
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: MBorder.width
+                    Layout.topMargin: MSpacing.xs
+                    Layout.bottomMargin: MSpacing.xs
+                    color: MColors.base01
+                }
+
                 RowLayout {
                     id: sinkSliderRow
                     spacing: MSpacing.s
@@ -223,39 +267,6 @@ PopupWindow {
                                 onClicked: {
                                     PipewireManager.setDefaultAudioSource(sourceNodeItem.modelData);
                                 }
-                            }
-                        }
-                    }
-                }
-
-                Rectangle {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: MBorder.width
-                    Layout.topMargin: MSpacing.xs
-                    Layout.bottomMargin: MSpacing.xs
-                    color: MColors.base01
-                }
-
-                MContainer {
-                    color: settingsMouseArea.containsMouse ? MColors.base01 : MColors.base00
-                    Item {
-                        implicitWidth: sourceSliderRow.implicitWidth
-                        implicitHeight: settingsText.implicitHeight
-                        MText {
-                            id: settingsText
-                            text: "SETTINGS"
-                            font.bold: true
-                        }
-                        MouseArea {
-                            id: settingsMouseArea
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            cursorShape: Qt.PointingHandCursor
-
-                            onClicked: {
-                                //TODO: use the command from settings
-                                Quickshell.execDetached(["sh", "-c", "wezterm start -e wiremix -v output"]);
-                                root.visible = false;
                             }
                         }
                     }
