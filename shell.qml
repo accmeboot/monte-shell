@@ -3,6 +3,7 @@ import QtQuick
 import Quickshell
 
 import qs.Modules.Bar
+import qs.Modules.Launcher
 import qs.Components
 
 Scope {
@@ -15,6 +16,11 @@ Scope {
 
             Bar {
                 id: barPanel
+                screen: rootItem.modelData
+            }
+
+            Launcher {
+                id: launcherPanel
                 screen: rootItem.modelData
             }
 

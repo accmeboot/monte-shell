@@ -75,6 +75,7 @@ PanelWindow {
                 BluetoothWidget {}
                 BatteryWidget {}
                 ClockWidget {}
+                LauncherWidget {}
                 TrayWidget {
                     id: trayWidget
                     trayPopup: trayPopup
