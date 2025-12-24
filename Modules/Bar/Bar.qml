@@ -3,7 +3,6 @@ import QtQuick
 import QtQuick.Layouts
 
 import qs.Components
-import qs.Config
 import qs.Modules.Bar.Widgets
 import qs.Modules.Bar.Popups
 
@@ -76,6 +75,10 @@ PanelWindow {
                 BluetoothWidget {}
                 BatteryWidget {}
                 ClockWidget {}
+                TrayWidget {
+                    id: trayWidget
+                    trayPopup: trayPopup
+                }
             }
         }
     }
@@ -83,6 +86,12 @@ PanelWindow {
     PipewirePopup {
         id: pipewirePopup
         widget: pipewireWidget
+        anchorWindow: root
+        contentHeight: content.height
+    }
+    TrayPopup {
+        id: trayPopup
+        widget: trayWidget
         anchorWindow: root
         contentHeight: content.height
     }

@@ -30,6 +30,10 @@ Item {
                 return "image://icon/application-x-executable";
             }
 
+            if (parent.source.startsWith("image://")) {
+                return parent.source;
+            }
+
             return `image://icon/${parent.source}`;
         }
         width: parent.size
