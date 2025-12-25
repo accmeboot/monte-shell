@@ -8,18 +8,20 @@ import qs.Components
 MContainer {
     id: root
 
-    color: MColors.base01
+    color: MColors.base0A
 
     RowLayout {
         spacing: MSpacing.xs
         MIcon {
             size: MIcons.l
             fromSource: root.getIcon()
-            color: MColors.base05
+            color: MColors.base00
             overlay: true
         }
         MText {
             text: NetworkManager.connectionName
+
+            color: MColors.base00
         }
     }
 

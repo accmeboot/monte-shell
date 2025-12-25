@@ -30,7 +30,7 @@ Item {
                 return "image://icon/application-x-executable";
             }
 
-            if (parent.source.startsWith("image://")) {
+            if (parent.source.startsWith("image://") || parent.source.startsWith("file://")) {
                 return parent.source;
             }
 

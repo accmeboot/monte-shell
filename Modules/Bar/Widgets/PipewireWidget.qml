@@ -11,7 +11,7 @@ MContainer {
 
     required property PipewirePopup pipewirePopup
 
-    color: MColors.base01
+    color: MColors.base09
 
     Item {
         implicitWidth: content.implicitWidth
@@ -34,11 +34,12 @@ MContainer {
 
                     return "volume-full.svg";
                 }
-                color: MColors.base05
+                color: MColors.base00
                 overlay: true
             }
             MText {
                 text: PipewireManager.deviceName
+                color: MColors.base00
             }
         }
 

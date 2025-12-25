@@ -8,7 +8,7 @@ import qs.Config
 MContainer {
     id: root
 
-    color: MColors.base01
+    color: MColors.base0C
 
     property UPowerDevice device: UPower.displayDevice
     property int percentage: device ? device.percentage * 100 : null

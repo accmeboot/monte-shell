@@ -217,10 +217,10 @@ PanelWindow {
                                     MText {
                                         text: {
                                             if (app.modelData.comment) {
-                                                return `${app.modelData.name} (<i>${app.modelData.comment}</i>)`;
+                                                return `<b>${app.modelData.name}</b> (<i>${app.modelData.comment}</i>)`;
                                             }
 
-                                            return app.modelData.name;
+                                            return `<b>${app.modelData.name}</b>`;
                                         }
                                         elide: Text.ElideRight
                                         //NOTE: QT Layout system sucks ass

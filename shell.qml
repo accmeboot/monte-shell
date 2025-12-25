@@ -4,6 +4,7 @@ import Quickshell
 
 import qs.Modules.Bar
 import qs.Modules.Launcher
+import qs.Modules.Notifications
 import qs.Components
 
 Scope {
@@ -21,6 +22,11 @@ Scope {
 
             Launcher {
                 id: launcherPanel
+                screen: rootItem.modelData
+            }
+
+            Notifications {
+                id: notificationsPanel
                 screen: rootItem.modelData
             }
 

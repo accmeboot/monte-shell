@@ -7,7 +7,7 @@ import qs.Config
 import qs.Components
 
 MContainer {
-    color: MColors.base01
+    color: MColors.base0B
 
     RowLayout {
         spacing: MSpacing.xs
@@ -24,11 +24,12 @@ MContainer {
                     return "bluetooth-off.svg";
                 }
             }
-            color: MColors.base05
+            color: MColors.base00
             overlay: true
         }
         MText {
             text: BluetoothManager.currentDeviceName ?? BluetoothManager.adapter?.name ?? ""
+            color: MColors.base00
         }
     }
 }
