@@ -22,7 +22,9 @@ PanelWindow {
 
     visible: Boolean(NotificationManager.activeList.count)
 
+    //TODO: get that from settings
     property int maxVisible: 3
+    property int notificationWidth: 300
 
     anchors {
         top: true
@@ -68,7 +70,7 @@ PanelWindow {
             Item {
                 id: contentItem
 
-                implicitWidth: 350
+                implicitWidth: root.notificationWidth
                 implicitHeight: nContainer.implicitHeight + stackItem.height
 
                 Item {
@@ -119,7 +121,7 @@ PanelWindow {
                     id: nContainer
 
                     property int idx: NotificationManager.activeList.count - 1
-                    property var notification: NotificationManager.activeList.get(idx)
+                    property QtObject notification: NotificationManager.activeList.get(idx) ?? QtObject
 
                     property bool hasIcon: Boolean(notification?.icon) || Boolean(notification?.image)
 
@@ -206,7 +208,7 @@ PanelWindow {
                                 }
 
                                 Item {
-                                    visible: Boolean(nContainer.notification?.actions.count)
+                                    visible: Boolean(nContainer.notification?.actions?.count)
                                     implicitHeight: MSpacing.xs
                                 }
 

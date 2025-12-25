@@ -205,7 +205,7 @@ Singleton {
             for (var i = root.activeList.count - 1; i >= 0; --i) {
                 var notification = root.activeList.get(i);
 
-                var hasActions = notification.actions.count > 0;
+                var hasActions = notification.actions?.count > 0;
                 var noTimeout = notification.expireTimeout <= 0;
 
                 if (hasActions || noTimeout)
