@@ -5,6 +5,7 @@ import Quickshell
 import qs.Modules.Bar
 import qs.Modules.Launcher
 import qs.Modules.Notifications
+import qs.Modules.Osd
 import qs.Components
 
 Scope {
@@ -27,6 +28,11 @@ Scope {
 
             Notifications {
                 id: notificationsPanel
+                screen: rootItem.modelData
+            }
+
+            VolumeOsd {
+                id: volumeOsdPanel
                 screen: rootItem.modelData
             }
 

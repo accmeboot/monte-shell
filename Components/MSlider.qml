@@ -10,31 +10,33 @@ Slider {
 
     value: 0.5
 
-    implicitWidth: 200
+    implicitWidth: vertical ? MIcons.xxl : 200
+    implicitHeight: vertical ? 200 : MIcons.xxl
 
     background: Rectangle {
-        x: root.leftPadding
-        y: root.topPadding + root.availableHeight / 2 - height / 2
+        x: root.vertical ? root.leftPadding + root.availableWidth / 2 - width / 2 : root.leftPadding
+        y: root.vertical ? root.topPadding : root.topPadding + root.availableHeight / 2 - height / 2
 
-        implicitWidth: root.implicitWidth
-        implicitHeight: MIcons.s
+        implicitWidth: root.vertical ? MIcons.s : root.implicitWidth
+        implicitHeight: root.vertical ? root.implicitHeight : MIcons.s
 
-        width: root.availableWidth
-        height: implicitHeight
+        width: root.vertical ? implicitWidth : root.availableWidth
+        height: root.vertical ? root.availableHeight : implicitHeight
         radius: MBorder.radius
         color: MColors.base02
 
         Rectangle {
-            width: root.visualPosition * parent.width
-            height: parent.height
+            anchors.bottom: root.vertical ? parent.bottom : undefined
+            width: root.vertical ? parent.width : root.visualPosition * parent.width
+            height: root.vertical ? (1 - root.visualPosition) * parent.height : parent.height
             color: MColors.base0D
             radius: MBorder.radius
         }
     }
 
     handle: Rectangle {
-        x: root.leftPadding + root.visualPosition * (root.availableWidth - width)
-        y: root.topPadding + root.availableHeight / 2 - height / 2
+        x: root.vertical ? root.leftPadding + root.availableWidth / 2 - width / 2 : root.leftPadding + root.visualPosition * (root.availableWidth - width)
+        y: root.vertical ? root.topPadding + root.visualPosition * (root.availableHeight - height) : root.topPadding + root.availableHeight / 2 - height / 2
 
         implicitWidth: MIcons.xxl
         implicitHeight: MIcons.xl
