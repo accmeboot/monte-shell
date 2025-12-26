@@ -163,7 +163,7 @@ The shell is designed for **Niri** but can be adapted for other Wayland composit
 
 4. **Launch the shell:**
    ````bash
-   quickshell -c ~/.config/quickshell/monte-shell
+   qs -c monte-shell
    ````
 
 5. **Set up autostart** - Add to your compositor config or session startup
@@ -225,7 +225,7 @@ monte-shell/
 
 ## License
 
-[Add your license here]
+MIT License
 
 ## Credits
 
